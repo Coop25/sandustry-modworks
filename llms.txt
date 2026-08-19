@@ -1,0 +1,23 @@
+# Sandustry Modding Documentation
+
+> Community-maintained Sandkit API v1 documentation for creating Sandustry mods.
+
+## Preferred AI context
+
+- [Complete Sandustry modding context](./llms-full.txt): Feed this single document to an AI before asking it to create, review, debug, or explain a Sandustry mod.
+
+## Focused references
+
+- [Practical AI guide](./ai-context.md): Core rules, workflow, examples, and reliability guidance.
+- [Sandkit API reference](./apireference.md): Exact main-entry and worker-entry method signatures.
+- [Mod folder structure](./modstructure.md): Manifest and package layout.
+- [Textures and configuration](./textureconfig.md): Config and texture overrides.
+- [Bundle patching](./patching.md): Patch schema and safety controls.
+- [Custom maps](./custommaps.md): Map manifest and blueprint configuration.
+
+## Human-facing documentation
+
+- [Documentation homepage](./)
+- [Practical guides](./docs/guides.html)
+- [API Explorer](./docs/api.html)
+- [Workshop publishing](./docs/publishing.html)

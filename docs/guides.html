@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Step-by-step Sandustry modding guides for manifests, structures, matter, maps, assets, patches, and performance.">
+    <meta name="theme-color" content="#0d0e0d">
+    <title>Guides · Sandustry Modding</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar"><nav class="nav-shell" aria-label="Primary navigation"><a class="brand" href="../"><span class="brand-mark">SK</span><span>Sandustry Modding</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button><div class="nav-links" id="site-nav" data-nav-links><a href="../">Start</a><a href="guides.html" aria-current="page">Guides</a><a href="api.html">API explorer</a><a href="publishing.html">Publishing</a><a href="../llms-full.txt">AI context</a></div></nav></header>
+    <main id="main">
+      <div class="shell page-hero"><p class="eyebrow">Practical guides</p><h1>From empty folder to working mod.</h1><p class="lede">These guides explain the boundaries that matter: what belongs in the manifest, which thread owns a change, how to mutate the simulation safely, and when a patch is justified.</p></div>
+      <div class="shell docs-layout">
+        <aside class="sidebar" aria-label="On this page"><p class="sidebar-title">On this page</p><a href="#first-mod">Your first mod</a><a href="#manifest">Manifest fields</a><a href="#runtime">Main vs worker</a><a href="#structures">Structures</a><a href="#elements">Elements & terrain</a><a href="#assets">Assets & overrides</a><a href="#maps">Custom maps</a><a href="#patches">Bundle patches</a><a href="#performance">Performance</a><a href="#debugging">Debugging</a></aside>
+        <article class="article">
+          <section id="first-mod">
+            <p class="eyebrow">01 / Foundation</p><h2>Your first mod</h2>
+            <p>A Sandustry mod is a folder with a <code>modinfo.json</code> manifest and one or more resources. Start with the smallest possible main-thread mod, confirm that it loads, then add one capability at a time.</p>
+            <pre class="file-tree">mods/
+└── first-mod/
+    ├── modinfo.json
+    ├── main.js
+    ├── preview.png
+    └── assets/</pre>
+            <h3>Minimal manifest</h3>
+            <pre>{
+  "manifestVersion": 1,
+  "id": "yourname.first-mod",
+  "name": "My First Mod",
+  "version": "1.0.0",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "description": "A small first Sandustry mod.",
+  "author": "Your name",
+  "dependencies": [],
+  "loadOrder": 0
+}</pre>
+            <h3>Minimal entry</h3>
+            <pre>await (async () =&gt; {
+  "use strict";
+
+  const api = sandkit.api;
+  api.ui.toast("My First Mod loaded");
+})();</pre>
+            <div class="note"><p><strong>Why the async wrapper?</strong> Sprite loading returns a promise. Using one async entry pattern from the beginning lets you safely <code>await api.sprites.loadFromMod(...)</code> later.</p></div>
+            <ol class="steps"><li>Put the folder in the local mods directory opened by Sandustry.</li><li>Launch through Steam, enable the mod, and restart if prompted.</li><li>Confirm the toast appears and check the game’s mod diagnostics if it does not.</li><li>Add one feature, reload, and test again.</li></ol>
+          </section>
+
+          <section id="manifest">
+            <p class="eyebrow">02 / Identity</p><h2>Manifest fields</h2>
+            <table><thead><tr><th>Field</th><th>Purpose</th></tr></thead><tbody>
+              <tr><td><code>manifestVersion</code></td><td>Format version for <code>modinfo.json</code>. Current local examples use <code>1</code>.</td></tr>
+              <tr><td><code>id</code></td><td>Stable internal identity. Use a namespaced value such as <code>author.mod-name</code>; do not change it after release.</td></tr>
+              <tr><td><code>version</code></td><td>Your release version. Semantic versions make update history easier to understand.</td></tr>
+              <tr><td><code>apiVersion</code></td><td>Sandkit API contract requested by the mod. The documented surface is version <code>1</code>.</td></tr>
+              <tr><td><code>entry</code></td><td>Main-thread JavaScript entry. Usually <code>main.js</code>.</td></tr>
+              <tr><td><code>workerEntry</code></td><td>Optional code loaded in manager and simulation workers.</td></tr>
+              <tr><td><code>dependencies</code></td><td>Other mod IDs that must load first.</td></tr>
+              <tr><td><code>loadOrder</code></td><td>Ordering hint when several mods affect related content.</td></tr>
+            </tbody></table>
+            <p>The manifest can also declare <code>configOverrides</code>, <code>textureOverrides</code>, asset providers, and a custom <code>map</code>. Keep paths relative and inside the mod folder.</p>
+          </section>
+
+          <section id="runtime">
+            <p class="eyebrow">03 / Runtime boundaries</p><h2>Main entry vs worker entry</h2>
+            <h3><code>main.js</code></h3><p>Use the main entry to register content, load sprites, update definitions, add UI, register tech, schedule triggers, and request simulation changes. Mutation methods commonly end in <code>WhenIdle</code> because the simulation may currently be running elsewhere.</p>
+            <h3><code>worker.js</code></h3><p>The worker entry runs in manager and simulation worker contexts. Its API is deliberately smaller, but simulation mutation methods are direct: <code>createAtCell</code>, <code>moveBetweenCells</code>, <code>damageAtCell</code>, and similar calls.</p>
+            <div class="note warning"><p><strong>Do not assume an API exists in both contexts.</strong> Use the API explorer’s Main and Worker filters. Main-only UI, sprite-loading, registration, and publishing-adjacent logic should not be placed in <code>worker.js</code>.</p></div>
+            <h3>Safe main-thread mutation</h3>
+            <pre>api.world.runWhenSimulationIdle(() =&gt; {
+  api.elements.replaceAtCellWhenIdle(cellX, cellY, sandType);
+});</pre>
+            <p>When a dedicated <code>*WhenIdle</code> method exists, call it directly. Use the explicit idle callback when several related operations need one safe boundary.</p>
+          </section>
+
+          <section id="structures">
+            <p class="eyebrow">04 / Structures</p><h2>Registering a structure</h2>
+            <pre>await api.sprites.loadFromMod("example-machine", "assets/machine.png");
+
+api.structures.register({
+  id: "example-machine",
+  name: "Example Machine",
+  description: "A compact 2 × 2 machine.",
+  categoryKey: "logistics",
+  order: 50,
+  shape: [
+    [1, 1],
+    [1, 1]
+  ],
+  render: {
+    imageName: "example-machine",
+    size: { width: 10, height: 10 },
+    offset: { x: -1, y: -1 },
+    z: 0.85,
+    ui: { outline: true, width: "10px", height: "10px" }
+  }
+});</pre>
+            <p>The <code>shape</code> determines occupied cells. The render definition is visual only; keep its size and offset aligned with the grid footprint.</p>
+            <h3>Periodic processors</h3>
+            <pre>api.structures.addProcessor("example-machine", {
+  intervalMs: 50,
+  process(structure, processor) {
+    const sourceX = structure.x;
+    const sourceY = structure.y - 1;
+    const targetY = structure.y + 2;
+    const elementType = processor.getElementTypeAtCell(sourceX, sourceY);
+
+    if (elementType === null || !processor.isCellEmpty(sourceX, targetY)) return;
+
+    processor.commit([
+      {
+        kind: "remove",
+        cellX: sourceX,
+        cellY: sourceY,
+        expectedElementType: elementType
+      },
+      {
+        kind: "create",
+        cellX: sourceX,
+        cellY: targetY,
+        elementType
+      }
+    ]);
+  }
+});</pre>
+            <p>A processor commit is atomic: every mutation is validated before anything changes. Include <code>expectedElementType</code> on removals so a stale read cannot remove a different element.</p>
+            <h3>Tech unlock</h3>
+            <pre>api.tech.registerNode("yourname.example-machine.tech", {
+  name: "Example Machine",
+  description: "Unlocks the Example Machine.",
+  cost: 1000,
+  branch: "logistics",
+  icon: { spriteName: "example-machine" },
+  unlocks: { structures: ["example-machine"] }
+}, {
+  parentId: 64
+});</pre>
+          </section>
+
+          <section id="elements">
+            <p class="eyebrow">05 / Matter</p><h2>Elements, particles, and terrain</h2>
+            <p>Resolve stable string IDs once, then work with the numeric type returned by Sandkit:</p>
+            <pre>const fireType = api.elements.getTypeFromId("fire");
+const type = api.elements.getResolvedTypeAtCell(cellX, cellY);
+
+if (type !== null &amp;&amp; type !== fireType) {
+  const definition = api.elements.getDefinitionByType(type);
+  // definition.matterType can distinguish solids, liquids, gases, and more.
+}</pre>
+            <ul><li><code>getTypeAtCell</code> reads the literal cell type.</li><li><code>getResolvedTypeAtCell</code> resolves a particle to its linked element type.</li><li><code>getInfoAtCell</code> reports the type, particle state, cell ID, and element index.</li><li><code>getMatterTypeAtCell</code> reports the broad matter category.</li></ul>
+            <h3>Elements are not terrain</h3><p>Elements occupy the simulation and may move. Terrain is the durable world layer with types and optional HP. Use <code>api.world.isTerrainAtCell</code> or <code>api.terrains.isAtCell</code> before choosing the mutation family.</p>
+            <pre>if (api.terrains.isAtCell(cellX, cellY)) {
+  api.terrains.damageAtCell(cellX, cellY, 8);
+} else if (api.fire.canBurnElementAtCell(cellX, cellY)) {
+  api.fire.burnElementAtCellWhenIdle(cellX, cellY);
+}</pre>
+          </section>
+
+          <section id="assets">
+            <p class="eyebrow">06 / Visuals & data</p><h2>Assets and overrides</h2>
+            <h3>Mod-owned sprites</h3><pre>await api.sprites.loadFromMod(
+  "yourname.machine",
+  "assets/machine.png",
+  { tint: 0xffffff }
+);</pre>
+            <h3>Native texture overrides</h3><pre>"textureOverrides": {
+  "conveyor_left": "assets/conveyor_left.png",
+  "shaker_left": {
+    "path": "assets/shaker_left_sheet.png",
+    "frameWidth": 18,
+    "frames": 6,
+    "intervalMs": 166
+  }
+}</pre>
+            <p>A string value replaces one static texture. An object declares an animated spritesheet with a fixed frame width, frame count, and interval.</p>
+            <h3>Config overrides</h3><pre>"configOverrides": {
+  "drill": "config/drill.json"
+}</pre>
+            <div class="note warning"><p>Overrides can conflict with other mods and game updates. Prefer targeted public API updates when the same result is possible.</p></div>
+          </section>
+
+          <section id="maps">
+            <p class="eyebrow">07 / Maps</p><h2>Custom map manifests</h2>
+            <p>Maps combine image blueprints with explicit world metadata. The local schema supports terrain, lights, sensors, authorization, walls, light metadata, decor, and a JSON config layer.</p>
+            <pre>"map": {
+  "blueprints": {
+    "terrain": "map/terrain.png",
+    "lights": "map/lights.png",
+    "sensors": "map/sensors.png",
+    "authorization": "map/authorization.png",
+    "wall": "map/wall.png",
+    "lightsMeta": "map/lights_meta.png",
+    "decor": "map/decor.png",
+    "config": "map/config.json"
+  },
+  "width": 1920,
+  "height": 1920,
+  "spawn": { "x": 243, "y": 50 },
+  "unstuck": { "x": 243, "y": 50 },
+  "deployment": "skip",
+  "topBounds": { "hard": 100, "soft": 275 },
+  "depthLight": {
+    "startY": 6500,
+    "endY": 10070,
+    "maxSize": 700,
+    "minSize": 200
+  },
+  "parallax": { "widthScale": 1.5, "offsetY": -2600 },
+  "colorMappings": { "4, 5, 6": "GoldSoil" }
+}</pre>
+            <p>Keep blueprint dimensions consistent with the declared map size, use the same coordinate system for spawn and unstuck locations, and validate color mappings against the terrain IDs you intend to paint.</p>
+          </section>
+
+          <section id="patches">
+            <p class="eyebrow">08 / Advanced</p><h2>Bundle patches</h2>
+            <p>Patches modify compiled game bundles before execution. Use them only when the public API cannot express the change.</p>
+            <pre>[
+  {
+    "id": "bundle-log-prefix",
+    "file": "js/bundle.js",
+    "find": "initializing workers",
+    "operation": "insertBefore",
+    "code": "[patched] ",
+    "expectedMatches": 1
+  }
+]</pre>
+            <ul><li><code>find</code> performs an exact string match.</li><li><code>regex</code> accepts a pattern and flags.</li><li>Operations include <code>insertBefore</code>, <code>replace</code>, and <code>wrap</code>.</li><li><code>expectedMatches</code> makes a changed bundle fail safely instead of patching the wrong location.</li><li><code>atomicGroup</code> ties related patches together so partial application does not leave mixed behavior.</li></ul>
+            <div class="note warning"><p><strong>Patches are game-version sensitive.</strong> Keep match strings narrow, document why every patch exists, and retest after every Sandustry update.</p></div>
+          </section>
+
+          <section id="performance">
+            <p class="eyebrow">09 / Performance</p><h2>Performance patterns</h2>
+            <ul><li>Do not traverse an entire connected network once for every member. Cache topology and choose one coordinator.</li><li>Back off polling when a structure is idle or fully blocked, then restore the fast interval after useful work.</li><li>Resolve element IDs and stable definitions once instead of on every cell check.</li><li>Reuse arrays, masks, coordinate keys, and mutation objects in per-tick hot paths.</li><li>Read all inputs before committing if two routing directions could otherwise move the same element twice.</li><li>Use atomic processor commits to avoid partial moves and extra repair work.</li><li>Cap connected networks and area scans so malformed layouts cannot create unbounded work.</li></ul>
+            <p>The Distributor example in this repository demonstrates topology caching, coordinator processing, bounded idle polling, reusable buffers, round-robin fairness, and simultaneous directional routing.</p>
+          </section>
+
+          <section id="debugging">
+            <p class="eyebrow">10 / Diagnostics</p><h2>Debugging checklist</h2>
+            <ol><li>Validate that <code>modinfo.json</code> is strict JSON—no comments or trailing commas.</li><li>Confirm every relative path exists with the exact spelling and case.</li><li>Check whether the method belongs to the main or worker API.</li><li>For async sprite loading, confirm the entry is awaited.</li><li>For mutations, confirm the simulation is idle or use the worker/processor-safe method.</li><li>Record a load marker with <code>api.storage.set</code> so registration failures survive the loading screen.</li><li>When a patch fails, compare its expected match count with the updated bundle before changing the patch.</li></ol>
+            <pre>api.storage.set("yourname.first-mod", "loadStatus", {
+  version: "1.0.0",
+  loaded: true,
+  structureRegistered: true
+});</pre>
+          </section>
+        </article>
+      </div>
+    </main>
+    <footer class="footer"><div class="shell footer-row"><p>Community documentation for Sandustry mod authors.</p><p><a href="api.html">Continue to the API explorer →</a></p></div></footer>
+    <script src="assets/site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Package, validate, publish, and safely update Sandustry mods on Steam Workshop.">
+    <meta name="theme-color" content="#0d0e0d">
+    <title>Publishing · Sandustry Modding</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar"><nav class="nav-shell" aria-label="Primary navigation"><a class="brand" href="../"><span class="brand-mark">SK</span><span>Sandustry Modding</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button><div class="nav-links" id="site-nav" data-nav-links><a href="../">Start</a><a href="guides.html">Guides</a><a href="api.html">API explorer</a><a href="publishing.html" aria-current="page">Publishing</a><a href="../llms-full.txt">AI context</a></div></nav></header>
+    <main id="main">
+      <div class="shell page-hero"><p class="eyebrow">Release safely</p><h1>Publish once. Update the same item forever.</h1><p class="lede">A release is more than clicking Upload. Preserve the mod’s internal ID, Workshop identity, preview asset, and update metadata so users receive upgrades instead of duplicate items.</p></div>
+      <div class="shell docs-layout">
+        <aside class="sidebar" aria-label="On this page"><p class="sidebar-title">On this page</p><a href="#package">Package checklist</a><a href="#workshop">First Workshop upload</a><a href="#identity">workshop.json</a><a href="#updates">Updating safely</a><a href="#errors">Common failures</a></aside>
+        <article class="article">
+          <section id="package"><p class="eyebrow">01 / Package</p><h2>Preflight checklist</h2><ul><li><code>modinfo.json</code> parses as strict JSON and uses manifest/API version 1.</li><li>The manifest’s <code>entry</code>, optional <code>workerEntry</code>, overrides, patches, maps, and assets all exist inside the folder.</li><li><code>preview.png</code> is a readable regular PNG file.</li><li>The internal <code>id</code> is stable and namespaced.</li><li>The release <code>version</code> and description match the actual change.</li><li>The mod loads in a clean game session and its important behavior is exercised.</li><li>Any bundle patch still matches exactly the expected number of locations.</li></ul><div class="note"><p>Keep development-only tests and notes outside the package folder. The Workshop upload should contain only files the mod needs.</p></div></section>
+          <section id="workshop"><p class="eyebrow">02 / First release</p><h2>First Workshop upload</h2><ol class="steps"><li>Copy the complete mod folder into Sandustry’s local mods directory.</li><li>Launch Sandustry through Steam so Workshop services and ownership are available.</li><li>Open <strong>Mods</strong>, choose <strong>Create mods</strong>, select the local mod, and verify its preview and description.</li><li>Click <strong>Upload</strong>. Complete the Steam Workshop agreement if Steam asks.</li><li>After success, confirm that the game created <code>workshop.json</code> in the local mod folder.</li><li>Back up that generated file with the rest of the mod source.</li></ol></section>
+          <section id="identity"><p class="eyebrow">03 / Identity</p><h2>Why <code>workshop.json</code> matters</h2><pre>{
+  "schemaVersion": 1,
+  "publishedFileId": "3785874614"
+}</pre><p>The numeric <code>publishedFileId</code> links one local folder to one Steam Workshop item. Sandustry uses it to show the local mod’s <strong>Open</strong> button and to update the existing item.</p><div class="note warning"><p><strong>Never casually delete or recreate this file.</strong> Uploading without it can create a new Workshop item instead of updating the old one. The Steam account performing an update must own the linked item.</p></div><p><code>modinfo.json</code> identifies the mod inside Sandkit. <code>workshop.json</code> identifies the published Steam item. They solve different problems and neither replaces the other.</p></section>
+          <section id="updates"><p class="eyebrow">04 / Updates</p><h2>Updating safely</h2><ol><li>Make and test the change in source control.</li><li>Increment the manifest version.</li><li>Update the description or changelog without changing the internal mod ID.</li><li>Confirm <code>workshop.json</code> still points to the intended Workshop item.</li><li>Copy the complete updated folder to the local mods directory.</li><li>Launch through the owning Steam account and upload from <strong>Create mods</strong>.</li><li>Open the item page and verify the visible version, notes, and preview.</li></ol><p>For compatibility-sensitive changes, state the tested Sandustry build and call out any bundle patches so users know what may need retesting after a game update.</p></section>
+          <section id="errors"><p class="eyebrow">05 / Troubleshooting</p><h2>Common publishing failures</h2><table><thead><tr><th>Symptom</th><th>Likely cause</th></tr></thead><tbody><tr><td>No Open button</td><td>The local record has no valid <code>publishedFileId</code>, usually because <code>workshop.json</code> is missing or invalid.</td></tr><tr><td>Steam unavailable</td><td>The game was not launched through Steam, Steam is offline, or Workshop services are unavailable.</td></tr><tr><td>Item not found</td><td>The ID in <code>workshop.json</code> no longer resolves.</td></tr><tr><td>Not owned</td><td>The current Steam account does not own the linked Workshop item.</td></tr><tr><td>Preview missing/invalid</td><td><code>preview.png</code> is absent, unreadable, outside the folder, or not a regular file.</td></tr><tr><td>Mod changed after startup</td><td>The local mod’s identity changed while Sandustry was running; restart before uploading.</td></tr><tr><td>Patch rejected</td><td>The current game bundle no longer matches the patch’s expected count.</td></tr></tbody></table></section>
+        </article>
+      </div>
+    </main>
+    <footer class="footer"><div class="shell footer-row"><p>Keep <code>workshop.json</code> with the mod source.</p><p><a href="guides.html#debugging">Review the debugging checklist →</a></p></div></footer>
+    <script src="assets/site.js"></script>
+  </body>
+</html>

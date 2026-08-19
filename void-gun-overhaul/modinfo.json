@@ -1,0 +1,13 @@
+{
+  "manifestVersion": 1,
+  "id": "cooper.void-gun-overhaul",
+  "name": "Void Gun Overhaul",
+  "version": "2.0.1",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "workerEntry": "worker.js",
+  "description": "A complete progression overhaul for Sandustry's Void Gun.\n\nFeatures:\n- Five Terrain Ability tiers: convert Dune to Sand, remove Stone, mine Copper, melt Ice into Water, and remove Sandstone.\n- Five Blast Radius tiers, adding 4 cells of radius per level.\n- Two additional native Tank Capacity tiers, raising maximum Voidjuice storage to 14,000.\n- Sunsand caught in the blast becomes stable Sand.\n- Preserves the normal Voidjuice cost, charging, visuals, sounds, and native resource drops.",
+  "author": "Cooper",
+  "dependencies": [],
+  "loadOrder": 0
+}

@@ -1,0 +1,1915 @@
+{
+  "schemaVersion": 1,
+  "probeVersion": "0.2.0",
+  "context": "main",
+  "capturedAt": "2026-08-19T14:46:05.178Z",
+  "safetyMode": "read-only automatic probes",
+  "probes": [
+    {
+      "target": "api.gameConfig.getAll()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "drill": {
+            "$type": "Object",
+            "properties": {
+              "maxRange": 7,
+              "raycastCount": 20,
+              "spreadAngle": 0.08726646259971647,
+              "redrawRange": 5,
+              "energyCost": 1,
+              "normalExcavationRate": 0.1,
+              "reducedExcavationRate": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "target": "api.action.getActive()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "id": 5,
+          "type": 3
+        }
+      }
+    },
+    {
+      "target": "api.action.getSelected()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "id": 5,
+          "type": 3
+        }
+      }
+    },
+    {
+      "target": "api.assets.getUrl('preview.png')",
+      "status": "ok",
+      "output": "file:///C:/Users/frank/AppData/Roaming/sandustry/mods/api-documentation-probe/preview.png"
+    },
+    {
+      "target": "api.scene.getActive()",
+      "status": "ok",
+      "output": 4
+    },
+    {
+      "target": "api.input.getMouseCellPosition()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      }
+    },
+    {
+      "target": "api.player.getWorldPosition()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "x": 14796.635068039688,
+          "y": 7941.890905400015
+        }
+      }
+    },
+    {
+      "target": "api.player.isOnGround()",
+      "status": "ok",
+      "output": false
+    },
+    {
+      "target": "api.player.isWorldPositionClear(playerX, playerY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 14796.635068039688,
+          "y": 7941.890905400015
+        }
+      },
+      "status": "ok",
+      "output": true
+    },
+    {
+      "target": "api.world.getCellIdAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": 2092594
+    },
+    {
+      "target": "api.world.isCellEmptyAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": false
+    },
+    {
+      "target": "api.world.isTerrainAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": false
+    },
+    {
+      "target": "api.elements.getRegisteredTypes()",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 50,
+        "items": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13
+        ],
+        "$omittedItems": 38
+      }
+    },
+    {
+      "target": "api.elements.getTypeAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": 16
+    },
+    {
+      "target": "api.elements.getResolvedTypeAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": 16
+    },
+    {
+      "target": "api.elements.getInfoAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "elementType": 16,
+          "isParticle": false,
+          "cellId": 2092594,
+          "elementIndex": 1092593
+        }
+      }
+    },
+    {
+      "target": "api.elements.getMatterTypeAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": 6
+    },
+    {
+      "target": "api.elements.getVelocityAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "x": 1,
+          "y": 19.440000534057617
+        }
+      }
+    },
+    {
+      "target": "api.elements.getDataFieldAtCell(mouseX, mouseY, 1)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993,
+          "fieldNumber": 1
+        }
+      },
+      "status": "ok",
+      "output": 0
+    },
+    {
+      "target": "api.elements.getNameByType(elementType)",
+      "input": 16,
+      "status": "ok",
+      "output": "Wet Seed"
+    },
+    {
+      "target": "api.elements.getDefinitionByType(elementType)",
+      "input": 16,
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "nameKey": "elements|wetSeed|name",
+          "interactions": {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 1,
+            "items": [
+              {
+                "$type": "Object",
+                "properties": {
+                  "kind": "structure",
+                  "structures": {
+                    "$type": "Array",
+                    "$prototypeMethods": [
+                      "at",
+                      "concat",
+                      "copyWithin",
+                      "entries",
+                      "every",
+                      "fill",
+                      "filter",
+                      "find",
+                      "findIndex",
+                      "findLast",
+                      "findLastIndex",
+                      "flat",
+                      "flatMap",
+                      "forEach",
+                      "includes",
+                      "indexOf",
+                      "join",
+                      "keys",
+                      "lastIndexOf",
+                      "map",
+                      "pop",
+                      "push",
+                      "reduce",
+                      "reduceRight",
+                      "reverse",
+                      "shift",
+                      "slice",
+                      "some",
+                      "sort",
+                      "splice",
+                      "toLocaleString",
+                      "toReversed",
+                      "toSorted",
+                      "toSpliced",
+                      "toString",
+                      "unshift",
+                      "values",
+                      "with"
+                    ],
+                    "length": 1,
+                    "items": [
+                      21
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "density": 100,
+          "matterType": 6,
+          "metaColor": 6736998
+        }
+      }
+    },
+    {
+      "target": "api.elements.getResolvedTypeFromCellId(cellId)",
+      "input": 2092594,
+      "status": "ok",
+      "output": 16
+    },
+    {
+      "target": "api.terrains.getDataAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": null
+    },
+    {
+      "target": "api.structures.getAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": null
+    },
+    {
+      "target": "api.structures.getUnlockedTypes()",
+      "status": "ok",
+      "output": {
+        "$type": "Set",
+        "$prototypeMethods": [
+          "add",
+          "clear",
+          "delete",
+          "difference",
+          "entries",
+          "forEach",
+          "has",
+          "intersection",
+          "isDisjointFrom",
+          "isSubsetOf",
+          "isSupersetOf",
+          "keys",
+          "symmetricDifference",
+          "union",
+          "values"
+        ],
+        "size": 86,
+        "items": [
+          11,
+          12,
+          15,
+          14,
+          13,
+          16,
+          4,
+          3,
+          2,
+          1,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "target": "api.energy.getNetworkAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 0,
+        "items": []
+      }
+    },
+    {
+      "target": "api.energy.getNetworkFreeCapacityAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": 0
+    },
+    {
+      "target": "api.items.getActive()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "id": 5,
+          "itemType": 2,
+          "nameKey": "items|vacuum|name",
+          "descriptionKey": "items|vacuum|description",
+          "categoryKey": "utility",
+          "sprite": {
+            "$type": "Object",
+            "properties": {
+              "id": "vacuum",
+              "mount": "cryoblaster",
+              "ui": {
+                "$type": "Object",
+                "properties": {
+                  "imageName": "vacuum_icon"
+                }
+              }
+            }
+          },
+          "data": {
+            "$type": "Object",
+            "properties": {
+              "tanks": {
+                "$type": "Array",
+                "$prototypeMethods": [
+                  "at",
+                  "concat",
+                  "copyWithin",
+                  "entries",
+                  "every",
+                  "fill",
+                  "filter",
+                  "find",
+                  "findIndex",
+                  "findLast",
+                  "findLastIndex",
+                  "flat",
+                  "flatMap",
+                  "forEach",
+                  "includes",
+                  "indexOf",
+                  "join",
+                  "keys",
+                  "lastIndexOf",
+                  "map",
+                  "pop",
+                  "push",
+                  "reduce",
+                  "reduceRight",
+                  "reverse",
+                  "shift",
+                  "slice",
+                  "some",
+                  "sort",
+                  "splice",
+                  "toLocaleString",
+                  "toReversed",
+                  "toSorted",
+                  "toSpliced",
+                  "toString",
+                  "unshift",
+                  "values",
+                  "with"
+                ],
+                "length": 6,
+                "items": [
+                  {
+                    "$type": "Object",
+                    "properties": {
+                      "elementType": 0,
+                      "amount": 0
+                    }
+                  },
+                  {
+                    "$type": "Object",
+                    "properties": {
+                      "elementType": 1,
+                      "amount": 3000
+                    }
+                  },
+                  {
+                    "$type": "Object",
+                    "properties": {
+                      "elementType": 1,
+                      "amount": 1543
+                    }
+                  },
+                  {
+                    "$type": "Object",
+                    "properties": {
+                      "elementType": 0,
+                      "amount": 0
+                    }
+                  },
+                  {
+                    "$type": "Object",
+                    "properties": {
+                      "elementType": 0,
+                      "amount": 0
+                    }
+                  },
+                  {
+                    "$type": "Object",
+                    "properties": {
+                      "elementType": 15,
+                      "amount": 2448
+                    }
+                  }
+                ]
+              },
+              "activeTankIdx": 5,
+              "filter": {
+                "$type": "Object",
+                "properties": {
+                  "elementType": null
+                }
+              },
+              "onlyFillActiveTank": true,
+              "suckCooldown": {
+                "$type": "Object",
+                "properties": {
+                  "time": 30,
+                  "last": 0
+                }
+              },
+              "sprayCooldown": {
+                "$type": "Object",
+                "properties": {
+                  "time": 20,
+                  "last": 202762907.61237124
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "target": "api.maps.getActive()",
+      "status": "ok",
+      "output": null
+    },
+    {
+      "target": "api.maps.getAvailable()",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 0,
+        "items": []
+      }
+    },
+    {
+      "target": "api.projectiles.getAll()",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 0,
+        "items": []
+      }
+    },
+    {
+      "target": "api.world.pickups.getAll()",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 0,
+        "items": []
+      }
+    },
+    {
+      "target": "api.settings.getAll()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {}
+      }
+    },
+    {
+      "target": "api.shared.buffers.get('documentation-probe:missing')",
+      "status": "ok",
+      "output": {
+        "$value": "undefined"
+      }
+    },
+    {
+      "target": "api.rendering.getDrawPositionAtCell(mouseX, mouseY)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 3731,
+          "y": 1993
+        }
+      },
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "x": 1081,
+          "y": 559
+        }
+      }
+    },
+    {
+      "target": "api.rendering.getGridMetrics()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "cellSize": 4,
+          "snapGridCellSize": 4
+        }
+      }
+    },
+    {
+      "target": "api.rendering.getOverlayViewportSize()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "width": 1920,
+          "height": 1088
+        }
+      }
+    },
+    {
+      "target": "api.rendering.withOverlayContext(context => snapshot(context))",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "$type": "CanvasRenderingContext2D",
+          "$prototypeMethods": {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 45,
+            "items": [
+              "arc",
+              "arcTo",
+              "beginPath",
+              "bezierCurveTo",
+              "clearRect",
+              "clip",
+              "closePath",
+              "createConicGradient",
+              "createImageData",
+              "createLinearGradient",
+              "createPattern",
+              "createRadialGradient"
+            ],
+            "$omittedItems": 33
+          },
+          "properties": {
+            "$type": "Object",
+            "properties": {}
+          }
+        }
+      }
+    },
+    {
+      "target": "api.raycast.castFromWorld(playerX, playerY, 0, 64)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 14796.635068039688,
+          "y": 7941.890905400015,
+          "angle": 0,
+          "maxDistance": 64
+        }
+      },
+      "status": "ok",
+      "output": null
+    },
+    {
+      "target": "api.sound.calculateDistanceOptionsAtWorld(playerX, playerY, 0.5)",
+      "input": {
+        "$type": "Object",
+        "properties": {
+          "x": 14796.635068039688,
+          "y": 7941.890905400015,
+          "baseVolume": 0.5
+        }
+      },
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "pan": 0,
+          "volume": 0.5,
+          "playbackRate": 0.5,
+          "filters": {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 1,
+            "items": [
+              {
+                "$type": "Object",
+                "properties": {
+                  "type": "lowpass",
+                  "frequency": 8000
+                }
+              }
+            ]
+          },
+          "distanceToPlayer": 0
+        }
+      }
+    },
+    {
+      "target": "api.patterns.createCircle(5)",
+      "input": 5,
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 5,
+        "items": [
+          {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 5,
+            "items": [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 5,
+            "items": [
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 5,
+            "items": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 5,
+            "items": [
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "$type": "Array",
+            "$prototypeMethods": [
+              "at",
+              "concat",
+              "copyWithin",
+              "entries",
+              "every",
+              "fill",
+              "filter",
+              "find",
+              "findIndex",
+              "findLast",
+              "findLastIndex",
+              "flat",
+              "flatMap",
+              "forEach",
+              "includes",
+              "indexOf",
+              "join",
+              "keys",
+              "lastIndexOf",
+              "map",
+              "pop",
+              "push",
+              "reduce",
+              "reduceRight",
+              "reverse",
+              "shift",
+              "slice",
+              "some",
+              "sort",
+              "splice",
+              "toLocaleString",
+              "toReversed",
+              "toSorted",
+              "toSpliced",
+              "toString",
+              "unshift",
+              "values",
+              "with"
+            ],
+            "length": 5,
+            "items": [
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "target": "api.utils.getDistance({0,0}, {3,4})",
+      "status": "ok",
+      "output": 5
+    },
+    {
+      "target": "api.utils.getDirection({0,0}, {3,4})",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "x": 0.6,
+          "y": 0.8
+        }
+      }
+    },
+    {
+      "target": "api.utils.getAngle({0,0}, {3,4})",
+      "status": "ok",
+      "output": 53.13010235415598
+    },
+    {
+      "target": "api.utils.getCoordinatesBetweenPoints({0,0}, {3,4})",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 4,
+        "items": [
+          {
+            "$type": "Object",
+            "properties": {
+              "x": 1,
+              "y": 1
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "x": 2,
+              "y": 2
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "x": 2,
+              "y": 3
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "x": 3,
+              "y": 4
+            }
+          }
+        ]
+      }
+    },
+    {
+      "target": "api.i18n.getLocale()",
+      "status": "ok",
+      "output": "en"
+    },
+    {
+      "target": "api.i18n.getLanguages()",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 23,
+        "items": [
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "en",
+              "englishName": "English",
+              "nativeName": "English",
+              "enabled": true,
+              "htmlLang": "en",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "fr",
+              "englishName": "French",
+              "nativeName": "Français",
+              "enabled": true,
+              "htmlLang": "fr",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "de",
+              "englishName": "German",
+              "nativeName": "Deutsch",
+              "enabled": true,
+              "htmlLang": "de",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "it",
+              "englishName": "Italian",
+              "nativeName": "Italiano",
+              "enabled": true,
+              "htmlLang": "it",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "ko",
+              "englishName": "Korean",
+              "nativeName": "한국어",
+              "enabled": true,
+              "htmlLang": "ko",
+              "fontFamily": "Noto Sans KR Variable",
+              "fontProbe": "한국어"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "ptBR",
+              "englishName": "Brazilian Portuguese",
+              "nativeName": "Português (Brasil)",
+              "enabled": true,
+              "htmlLang": "pt-BR",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "es",
+              "englishName": "Spanish",
+              "nativeName": "Español",
+              "enabled": true,
+              "htmlLang": "es",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "tr",
+              "englishName": "Turkish",
+              "nativeName": "Türkçe",
+              "enabled": true,
+              "htmlLang": "tr",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "uk",
+              "englishName": "Ukrainian",
+              "nativeName": "Українська",
+              "enabled": true,
+              "htmlLang": "uk",
+              "fontFamily": "Play"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "ja",
+              "englishName": "Japanese",
+              "nativeName": "日本語",
+              "enabled": true,
+              "htmlLang": "ja",
+              "fontFamily": "Noto Sans JP Variable",
+              "fontProbe": "日本語"
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "zhCN",
+              "englishName": "Chinese (Simplified)",
+              "nativeName": "简体中文",
+              "enabled": true,
+              "htmlLang": "zh-CN",
+              "fontFamily": "Noto Sans SC Variable",
+              "fontProbe": "简体中文",
+              "browserLocales": {
+                "$type": "Array",
+                "$prototypeMethods": [
+                  "at",
+                  "concat",
+                  "copyWithin",
+                  "entries",
+                  "every",
+                  "fill",
+                  "filter",
+                  "find",
+                  "findIndex",
+                  "findLast",
+                  "findLastIndex",
+                  "flat",
+                  "flatMap",
+                  "forEach",
+                  "includes",
+                  "indexOf",
+                  "join",
+                  "keys",
+                  "lastIndexOf",
+                  "map",
+                  "pop",
+                  "push",
+                  "reduce",
+                  "reduceRight",
+                  "reverse",
+                  "shift",
+                  "slice",
+                  "some",
+                  "sort",
+                  "splice",
+                  "toLocaleString",
+                  "toReversed",
+                  "toSorted",
+                  "toSpliced",
+                  "toString",
+                  "unshift",
+                  "values",
+                  "with"
+                ],
+                "length": 4,
+                "items": [
+                  "zh",
+                  "zh-CN",
+                  "zh-SG",
+                  "zh-Hans"
+                ]
+              }
+            }
+          },
+          {
+            "$type": "Object",
+            "properties": {
+              "code": "zhTW",
+              "englishName": "Chinese (Traditional)",
+              "nativeName": "繁體中文",
+              "enabled": true,
+              "htmlLang": "zh-TW",
+              "fontFamily": "Noto Sans TC Variable",
+              "fontProbe": "繁體中文",
+              "browserLocales": {
+                "$type": "Array",
+                "$prototypeMethods": [
+                  "at",
+                  "concat",
+                  "copyWithin",
+                  "entries",
+                  "every",
+                  "fill",
+                  "filter",
+                  "find",
+                  "findIndex",
+                  "findLast",
+                  "findLastIndex",
+                  "flat",
+                  "flatMap",
+                  "forEach",
+                  "includes",
+                  "indexOf",
+                  "join",
+                  "keys",
+                  "lastIndexOf",
+                  "map",
+                  "pop",
+                  "push",
+                  "reduce",
+                  "reduceRight",
+                  "reverse",
+                  "shift",
+                  "slice",
+                  "some",
+                  "sort",
+                  "splice",
+                  "toLocaleString",
+                  "toReversed",
+                  "toSorted",
+                  "toSpliced",
+                  "toString",
+                  "unshift",
+                  "values",
+                  "with"
+                ],
+                "length": 4,
+                "items": [
+                  "zh-TW",
+                  "zh-HK",
+                  "zh-MO",
+                  "zh-Hant"
+                ]
+              }
+            }
+          }
+        ],
+        "$omittedItems": 11
+      }
+    },
+    {
+      "target": "api.i18n.getAvailableLocales()",
+      "status": "ok",
+      "output": {
+        "$type": "Array",
+        "$prototypeMethods": [
+          "at",
+          "concat",
+          "copyWithin",
+          "entries",
+          "every",
+          "fill",
+          "filter",
+          "find",
+          "findIndex",
+          "findLast",
+          "findLastIndex",
+          "flat",
+          "flatMap",
+          "forEach",
+          "includes",
+          "indexOf",
+          "join",
+          "keys",
+          "lastIndexOf",
+          "map",
+          "pop",
+          "push",
+          "reduce",
+          "reduceRight",
+          "reverse",
+          "shift",
+          "slice",
+          "some",
+          "sort",
+          "splice",
+          "toLocaleString",
+          "toReversed",
+          "toSorted",
+          "toSpliced",
+          "toString",
+          "unshift",
+          "values",
+          "with"
+        ],
+        "length": 1,
+        "items": [
+          "en"
+        ]
+      }
+    },
+    {
+      "target": "api.i18n.getGlobals()",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "key.IgnoreAngleLock": "B",
+          "key.Left": "A",
+          "key.Right": "D",
+          "key.Boost": "W",
+          "key.Descend": "S",
+          "key.Hover": "Space",
+          "key.SprintBoost": "Shift",
+          "key.OpenInventory": "Tab",
+          "key.OpenBuildMenu": "Q",
+          "key.OpenTechTree": "T",
+          "key.OpenUpgrades": "U",
+          "key.Escape": "Esc",
+          "key.ReverseBuildDirection": "Alt",
+          "key.BuildMode": "R",
+          "key.Marquee": "C",
+          "key.Demolish": "X",
+          "key.Copy": "Ctrl + C",
+          "key.Paste": "Ctrl + V",
+          "key.Flip": "Ctrl + H",
+          "key.Delete": "⌫",
+          "key.Ruler": "V",
+          "key.Pause": "P",
+          "key.PauseCamera": "N",
+          "key.GrapplingHook": "G",
+          "key.OverrideReplaceStructures": "Ctrl",
+          "key.QuickSave": "F5",
+          "key.QuickLoad": "F9",
+          "key.ToggleGameHud": "F4",
+          "key.OpenMap": "M",
+          "key.SweeperDroneCancel": "Right Click",
+          "key.ReconDroneDespawn": "Right Click",
+          "key.PrefabulatorCancel": "Right Click"
+        },
+        "$omittedProperties": 31
+      }
+    },
+    {
+      "target": "api.i18n.formatNumber(12345.67)",
+      "input": 12345.67,
+      "status": "ok",
+      "output": "12,345.67"
+    },
+    {
+      "target": "api.i18n.key('probe', 'example', 'name')",
+      "status": "ok",
+      "output": "probe|example|name"
+    },
+    {
+      "target": "api.i18n.translatable('probe|example', 'Example')",
+      "status": "ok",
+      "output": {
+        "$type": "Object",
+        "properties": {
+          "__translatable": true,
+          "key": "probe|example",
+          "fallback": "Example"
+        }
+      }
+    },
+    {
+      "target": "api.time.getTimeMs()",
+      "status": "ok",
+      "output": 203025957.71247625
+    },
+    {
+      "target": "api.time.getTick()",
+      "status": "ok",
+      "output": 13708768
+    },
+    {
+      "target": "api.tools.grabber.getSize()",
+      "status": "ok",
+      "output": 25
+    },
+    {
+      "target": "api.tools.grabber.isActive()",
+      "status": "ok",
+      "output": false
+    },
+    {
+      "target": "api.tools.grabber.isLoaded()",
+      "status": "ok",
+      "output": false
+    },
+    {
+      "target": "api.random.int(10, 20)",
+      "status": "ok",
+      "output": 16
+    },
+    {
+      "target": "api.random.float(0.25, 0.75)",
+      "status": "ok",
+      "output": 0.43977884249088284
+    }
+  ],
+  "sampleContext": {
+    "mouseCell": {
+      "x": 3731,
+      "y": 1993
+    },
+    "playerPosition": {
+      "x": 14796.635068039688,
+      "y": 7941.890905400015
+    },
+    "cellId": 2092594,
+    "elementType": 16
+  },
+  "workerReports": [],
+  "workerReportCount": 0
+}

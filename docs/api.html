@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Search the Sandkit API v1 main and worker methods used by Sandustry mods.">
+    <meta name="theme-color" content="#0d0e0d">
+    <title>API Explorer · Sandustry Modding</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar"><nav class="nav-shell" aria-label="Primary navigation"><a class="brand" href="../"><span class="brand-mark">SK</span><span>Sandustry Modding</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button><div class="nav-links" id="site-nav" data-nav-links><a href="../">Start</a><a href="guides.html">Guides</a><a href="api.html" aria-current="page">API explorer</a><a href="publishing.html">Publishing</a><a href="../llms-full.txt">AI context</a></div></nav></header>
+    <main id="main">
+      <div class="shell page-hero"><p class="eyebrow">Sandkit API v1</p><h1>Find the method, then understand its context.</h1><p class="lede">Search exact method signatures across the main entry and worker entry. Expand any method for a plain-language explanation, a practical use case, starter code, and typical output. Outputs captured by the diagnostic mod carry an <strong>Observed in game</strong> badge.</p></div>
+      <div class="shell">
+        <div class="api-toolbar">
+          <label class="search-box"><span class="search-icon" aria-hidden="true">/</span><span class="skip-link">Search API</span><input id="api-search" type="search" placeholder="Search structures, elements, toast, velocity…" autocomplete="off"></label>
+          <div class="segmented" aria-label="API context filter"><button class="active" type="button" data-context="all">All</button><button type="button" data-context="main">Main</button><button type="button" data-context="worker">Worker</button></div>
+        </div>
+        <p class="api-summary" id="api-summary" aria-live="polite">Loading the API reference…</p>
+        <div id="api-results"><p class="loading">Reading apireference.md…</p></div>
+        <div class="callout"><strong>Engine escape hatch</strong><p><code>sandkit.engine.api</code> and <code>sandkit.engine.state</code> expose internals. They are useful for investigation but carry more compatibility risk than <code>sandkit.api</code>.</p></div>
+      </div>
+    </main>
+    <footer class="footer"><div class="shell footer-row"><p>Signatures are generated from the repository’s API reference.</p><p><a href="guides.html#runtime">Learn main vs worker →</a></p></div></footer>
+    <script src="assets/site.js"></script>
+    <script src="assets/api-data.js"></script>
+    <script src="assets/api.js"></script>
+  </body>
+</html>

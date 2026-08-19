@@ -1,0 +1,12 @@
+{
+  "manifestVersion": 1,
+  "id": "cooper.distributor",
+  "name": "Distributor",
+  "version": "1.4.2",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "description": "Adds the Distributor, a connected logistics building that evenly spreads incoming materials across every available output.\n\nFeatures:\n- Place one block or drag a line of connected Distributors.\n- Materials landing on any top edge join the shared network.\n- Gas can also enter from below and distribute upward; solids and liquids cannot.\n- Fire is never accepted from either direction.\n- Outputs rotate in deterministic round-robin order for an even split over time.\n- Blocked outputs are skipped without allowing waiting material to fall through.\n- Supports solids, liquids, and gases.\n- Adds a dedicated Logistics research node directly after Advanced Filter.\n\nDev Notes:\n\n- Feedback is 100% welcome and encouraged",
+  "author": "Cooper",
+  "dependencies": [],
+  "loadOrder": 0
+}

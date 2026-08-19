@@ -1,0 +1,42 @@
+[
+  {
+    "id": "void-gun-native-damage-options",
+    "file": "js/bundle.js",
+    "find": "ie.FH.patterns.excavate(e,b,y,x,w,k,{fromDrill:!0,drillTierDamage:1})",
+    "operation": "replace",
+    "code": "ie.FH.patterns.excavate(e,b,y,x,w,k,{fromDrill:!0,drillTierDamage:(o.sandkeeperAbilityLevel||0)>=2?8:0,sandkeeperCopperDamage:(o.sandkeeperAbilityLevel||0)>=3?12:0,sandkeeperSandstoneDamage:(o.sandkeeperAbilityLevel||0)>=5?42:0,sandkeeperDuneToSand:(o.sandkeeperAbilityLevel||0)>=1})",
+    "expectedMatches": 1
+  },
+  {
+    "id": "void-gun-main-material-damage",
+    "file": "js/bundle.js",
+    "find": "u=v(null==o?void 0:o.excavationRequirements,l,d)",
+    "operation": "replace",
+    "code": "u=\"copper\"===(null==o?void 0:o.id)&&void 0!==d.sandkeeperCopperDamage?d.sandkeeperCopperDamage:\"sandstone\"===(null==o?void 0:o.id)&&d.sandkeeperSandstoneDamage?d.sandkeeperSandstoneDamage:v(null==o?void 0:o.excavationRequirements,l,d)",
+    "expectedMatches": 2
+  },
+  {
+    "id": "void-gun-worker-material-damage",
+    "file": "js/simulation-worker.js",
+    "find": "d=y(null==s?void 0:s.excavationRequirements,l,u)",
+    "operation": "replace",
+    "code": "d=\"copper\"===(null==s?void 0:s.id)&&void 0!==u.sandkeeperCopperDamage?u.sandkeeperCopperDamage:\"sandstone\"===(null==s?void 0:s.id)&&u.sandkeeperSandstoneDamage?u.sandkeeperSandstoneDamage:y(null==s?void 0:s.excavationRequirements,l,u)",
+    "expectedMatches": 2
+  },
+  {
+    "id": "void-gun-main-dune-output",
+    "file": "js/bundle.js",
+    "find": "o.FH.elements.createAt(e,s,i,t.output.elementType,{particle:{velocity:n}})",
+    "operation": "replace",
+    "code": "o.FH.elements.createAt(e,s,i,f.sandkeeperDuneToSand&&\"dune\"===t.id?r.RJ.Sand:t.output.elementType,{particle:{velocity:n}})",
+    "expectedMatches": 1
+  },
+  {
+    "id": "void-gun-worker-dune-output",
+    "file": "js/simulation-worker.js",
+    "find": "s.FH.elements.createAt(e,o,a,t.output.elementType,{particle:{velocity:r}})",
+    "operation": "replace",
+    "code": "s.FH.elements.createAt(e,o,a,h.sandkeeperDuneToSand&&\"dune\"===t.id?n.RJ.Sand:t.output.elementType,{particle:{velocity:r}})",
+    "expectedMatches": 1
+  }
+]

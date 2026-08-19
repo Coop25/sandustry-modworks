@@ -1,0 +1,13 @@
+{
+  "manifestVersion": 1,
+  "id": "cooper.api-documentation-probe",
+  "name": "API Documentation Probe",
+  "version": "0.2.0",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "workerEntry": "worker.js",
+  "description": "Logs read-only Sandkit API return values and runtime object shapes for documentation. It does not intentionally alter world cells, inventory, progression, maps, or other gameplay state.",
+  "author": "Cooper",
+  "dependencies": [],
+  "loadOrder": 1000
+}
