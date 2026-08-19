@@ -3,7 +3,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const sourcePath = path.resolve(process.argv[2] || "apireference.md");
+const sourcePath = path.resolve(process.argv[2] || "docs/apireference.md");
 const outputPath = path.resolve(
   process.argv[3] || "docs/assets/api-data.js",
 );

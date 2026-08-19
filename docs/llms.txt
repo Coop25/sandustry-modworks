@@ -4,7 +4,7 @@
 
 ## Preferred AI context
 
-- [Complete Sandustry modding context](./llms-full.txt): Feed this single document to an AI before asking it to create, review, debug, or explain a Sandustry mod.
+- [Complete Sandustry modding context](./llms-full.txt): Give this single document to an AI before asking it to create, review, debug, or explain a Sandustry mod.
 
 ## Focused references
 
@@ -18,6 +18,6 @@
 ## Human-facing documentation
 
 - [Documentation homepage](./)
-- [Practical guides](./docs/guides.html)
-- [API Explorer](./docs/api.html)
-- [Workshop publishing](./docs/publishing.html)
+- [Practical guides](./guides.html)
+- [API Explorer](./api.html)
+- [Workshop publishing](./publishing.html)

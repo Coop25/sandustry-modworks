@@ -809,7 +809,7 @@ contextButtons.forEach((button) => button.addEventListener("click", () => {
 if (entries.length > 0) {
   render();
 } else {
-  fetch("../apireference.md")
+  fetch("apireference.md")
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.text();

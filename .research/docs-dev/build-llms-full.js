@@ -4,9 +4,10 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const root = path.resolve(__dirname, "..", "..");
+const docs = path.join(root, "docs");
 const output = process.argv[2]
   ? path.resolve(process.argv[2])
-  : path.join(root, "llms-full.txt");
+  : path.join(docs, "llms-full.txt");
 const sources = [
   ["Practical AI Guide", "ai-context.md"],
   ["Exact Sandkit API Reference", "apireference.md"],
@@ -25,7 +26,7 @@ const header = [
 ].join("\n");
 
 const body = sources.map(([title, relativePath]) => {
-  const content = fs.readFileSync(path.join(root, relativePath), "utf8").trim();
+  const content = fs.readFileSync(path.join(docs, relativePath), "utf8").trim();
   return `\n---\n\n# ${title}\n\n${content}\n`;
 }).join("");
 

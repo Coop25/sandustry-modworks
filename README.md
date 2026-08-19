@@ -2,7 +2,7 @@
 
 Sandustry mods, Sandkit API documentation, practical development guides, and AI-ready reference material maintained by [Coop25](https://github.com/Coop25).
 
-[Open the documentation](https://coop25.github.io/sandustry-modworks/) · [Browse the API Explorer](https://coop25.github.io/sandustry-modworks/docs/api.html) · [Give the docs to an AI](https://coop25.github.io/sandustry-modworks/llms-full.txt)
+[Open the documentation](https://coop25.github.io/sandustry-modworks/) · [Browse the API Explorer](https://coop25.github.io/sandustry-modworks/api.html) · [Give the docs to an AI](https://coop25.github.io/sandustry-modworks/llms-full.txt)
 
 ## Mods
 
@@ -18,14 +18,14 @@ Each released mod keeps its own manifest, source code, assets, preview, document
 The repository also contains community-focused Sandustry modding documentation built around Sandkit API v1 and verified working mods.
 
 - [Documentation homepage](https://coop25.github.io/sandustry-modworks/)
-- [Practical modding guides](https://coop25.github.io/sandustry-modworks/docs/guides.html)
-- [Searchable API Explorer](https://coop25.github.io/sandustry-modworks/docs/api.html)
-- [Steam Workshop publishing guide](https://coop25.github.io/sandustry-modworks/docs/publishing.html)
-- [Exact API method reference](./apireference.md)
-- [Mod folder structure](./modstructure.md)
-- [Texture and configuration overrides](./textureconfig.md)
-- [Bundle patching](./patching.md)
-- [Custom maps](./custommaps.md)
+- [Practical modding guides](https://coop25.github.io/sandustry-modworks/guides.html)
+- [Searchable API Explorer](https://coop25.github.io/sandustry-modworks/api.html)
+- [Steam Workshop publishing guide](https://coop25.github.io/sandustry-modworks/publishing.html)
+- [Exact API method reference](./docs/apireference.md)
+- [Mod folder structure](./docs/modstructure.md)
+- [Texture and configuration overrides](./docs/textureconfig.md)
+- [Bundle patching](./docs/patching.md)
+- [Custom maps](./docs/custommaps.md)
 
 The API Explorer currently indexes 372 main-entry and worker-entry methods. Entries include exact signatures, plain-language descriptions, example use cases, starter code, typical output, and an **Observed in game** badge when an output was verified through the diagnostic probe.
 
@@ -39,7 +39,7 @@ https://coop25.github.io/sandustry-modworks/llms-full.txt
 
 That document combines the practical AI guide, exact main/worker API signatures, manifest structure, overrides, patching, and custom-map reference into one plain-text resource.
 
-The smaller [`llms.txt`](./llms.txt) file provides AI discovery links, while [`ai-context.md`](./ai-context.md) contains the core reliability rules and development patterns.
+The smaller [`llms.txt`](./docs/llms.txt) file provides AI discovery links, while [`ai-context.md`](./docs/ai-context.md) contains the core reliability rules and development patterns.
 
 ## Installing a mod
 
@@ -58,20 +58,21 @@ sandustry-modworks/
 ├─ distributor/                 # Distributor mod
 ├─ void-gun-overhaul/           # Void Gun Overhaul mod
 ├─ api-documentation-probe/     # Development-only API probe
-├─ docs/                        # Human-facing documentation site
-├─ apireference.md              # Exact Sandkit API signatures
-├─ ai-context.md                # Practical AI modding guide
-├─ llms.txt                     # AI discovery file
-├─ llms-full.txt                # Complete single-file AI context
-└─ index.html                   # Documentation homepage
+├─ docs/                        # GitHub Pages root and public documentation
+│  ├─ index.html               # Public documentation homepage
+│  ├─ api.html                 # Searchable API Explorer
+│  ├─ llms.txt                 # Public AI discovery file
+│  ├─ llms-full.txt            # Public single-file AI context
+│  ├─ apireference.md          # Exact Sandkit API signatures
+│  └─ ai-context.md            # Practical AI modding guide
 ```
 
 ## Working on mods
 
 Before changing or creating a mod:
 
-1. Read the [practical guides](https://coop25.github.io/sandustry-modworks/docs/guides.html).
-2. Confirm every API call in the [API Explorer](https://coop25.github.io/sandustry-modworks/docs/api.html).
+1. Read the [practical guides](https://coop25.github.io/sandustry-modworks/guides.html).
+2. Confirm every API call in the [API Explorer](https://coop25.github.io/sandustry-modworks/api.html).
 3. Keep main-thread and worker-thread APIs separate.
 4. Use `WhenIdle` methods or other documented safe boundaries for main-thread simulation mutations.
 5. Preserve stable mod IDs and existing `workshop.json` files.
